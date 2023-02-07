@@ -1,6 +1,6 @@
 import express from 'express';
-import { productRouter } from './product.router';
+import { salesRouter } from './sales.router';
 
 export const routes = express.Router();
 
-routes.use(productRouter);
+routes.use(salesRouter);
