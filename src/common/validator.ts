@@ -1,7 +1,7 @@
 export function validate(cpf: string) {
 	if (!cpf) return false;
     cpf = removeSpecialCharacters(cpf);  
-    if (cpf.length != 11) return false;
+    if (hasValidLength(cpf)) return false;
     if (hasEqualDigits(cpf)) return false;
     try {  
         let d1, d2 = 0;  
@@ -19,12 +19,10 @@ export function validate(cpf: string) {
         dg1 = (rest < 2) ? dg1 = 0 : 11 - rest;  
         d2 += 2 * dg1;  
         rest = (d2 % 11);  
-        if (rest < 2)  
-            dg2 = 0;  
-        else  
-            dg2 = 11 - rest;  
+        if (rest < 2) dg2 = 0;  
+        else dg2 = 11 - rest;  
         let nDigVerific = cpf.substring(cpf.length-2, cpf.length);  
-        nDigResult = "" + dg1 + "" + dg2;  
+        nDigResult = `${dg1}${dg2}`;  
         return nDigVerific == nDigResult;
     } catch (e){  
         console.error("Erro !" + e);  
@@ -38,4 +36,8 @@ function removeSpecialCharacters(cpf: string): string {
 
 function hasEqualDigits(cpf: string): boolean {
     return cpf.split("").every(c => c === cpf[0])
+}
+
+function hasValidLength(cpf: string): boolean {
+    return cpf.length != 11;
 }
