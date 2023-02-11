@@ -12,7 +12,7 @@ const pool = new Pool({
 export const createSaleForCustomer = (document: string, items: any[], coupon: number) => {
     let total = 0
     if(!validate(document)) throw new Error('CPF Inválido')
-    items.map(item => {
+    items.forEach(item => {
         total += item.price * item.quantity
     })
 

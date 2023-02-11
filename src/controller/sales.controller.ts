@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express"
+import { Request, Response } from "express"
 import { createSaleForCustomer } from "../service/sales.service";
 
 export const createSale = (req: Request, res: Response) => {
