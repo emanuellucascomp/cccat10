@@ -10,4 +10,9 @@ export default class Coupon {
         this.value = value;
         this.expirationDate = expirationDate;
     }
+
+    isExpired(): boolean{
+        const today = new Date();
+        return today.getTime() > this.expirationDate.getTime()
+    }
 }

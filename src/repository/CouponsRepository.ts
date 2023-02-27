@@ -1,4 +1,3 @@
-import { error } from "console";
 import { Pool } from "pg";
 import Coupon from "../model/Coupon";
 
